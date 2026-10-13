@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperNest | Artisanal & Premium Stationery</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: {
+                            50: '#FDFBF7',
+                            100: '#F7F3EC',
+                            200: '#EFE7DA',
+                            300: '#E4D8C4',
+                        },
+                        sage: {
+                            50: '#F2F5F2',
+                            100: '#E1E8E1',
+                            300: '#A4B7A1',
+                            600: '#6E7E6B',
+                            700: '#586655',
+                            800: '#434E41',
+                        },
+                        sand: '#F5F0EB',
+                        charcoal: {
+                            800: '#333735',
+                            900: '#2C302E',
+                        },
+                        terracotta: {
+                            500: '#C87D55',
+                            600: '#B36B44',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FDFBF7;
+            color: #2C302E;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .product-card img {
+            transition: transform 0.6s ease, opacity 0.3s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Printable Receipt Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-area, #printable-area * {
+                visibility: visible;
+            }
+            #printable-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white;
+                color: black;
+                padding: 20px;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-sage-600 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-sage-700 text-ivory-50 text-xs text-center py-2 px-4 tracking-wider uppercase flex justify-between items-center px-6">
+        <span class="hidden sm:inline">Crafted with care & eco-conscious paper</span>
+        <span class="mx-auto sm:mx-0 font-medium">✨ Free Delivery across India on orders over ₹999 | Use Code: <strong class="underline font-bold">NEST10</strong></span>
+        <span class="hidden sm:inline">Support: hello@papernest.in</span>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-ivory-50/90 backdrop-blur-md border-b border-ivory-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-charcoal-900 focus:outline-none hover:text-sage-600">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+
+                <!-- Brand Logo -->
+                <a href="#" onclick="navigateTo('home'); return false;" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-sage-600 text-ivory-50 flex items-center justify-center font-serif text-xl font-bold shadow-sm group-hover:bg-sage-700 transition">P</div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-2xl font-bold tracking-tight text-charcoal-900 leading-none">PaperNest</span>
+                        <span class="text-[10px] tracking-widest text-sage-600 uppercase font-semibold mt-0.5">Artisanal Stationery</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                    <a href="#" onclick="navigateTo('home')" class="nav-link text-charcoal-900 hover:text-sage-600 transition py-2" data-page-id="home">Home</a>
+                    <a href="#" onclick="navigateTo('shop')" class="nav-link text-charcoal-900 hover:text-sage-600 transition py-2" data-page-id="shop">Shop All</a>
+                    <a href="#" onclick="navigateTo('categories')" class="nav-link text-charcoal-900 hover:text-sage-600 transition py-2" data-page-id="categories">Categories</a>
+                    <a href="#" onclick="navigateTo('about')" class="nav-link text-charcoal-900 hover:text-sage-600 transition py-2" data-page-id="about">About Us</a>
+                    <a href="#" onclick="navigateTo('contact')" class="nav-link text-charcoal-900 hover:text-sage-600 transition py-2" data-page-id="contact">Contact</a>
+                    <a href="#" onclick="navigateTo('orders')" class="nav-link text-charcoal-900 hover:text-sage-600 transition py-2 flex items-center gap-1.5" data-page-id="orders">
+                        <i class="fa-solid fa-chart-line text-xs text-sage-600"></i> Reports & Orders
+                    </a>
+                </nav>
+
+                <!-- Right Action Icons -->
+                <div class="flex items-center space-x-4 sm:space-x-6">
+                    <!-- Quick Search Button -->
+                    <button onclick="toggleSearchModal()" class="text-charcoal-900 hover:text-sage-600 transition p-2" title="Search Stationery">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </button>
+
+                    <!-- Wishlist Counter -->
+                    <button onclick="navigateTo('shop')" class="relative text-charcoal-900 hover:text-sage-600 transition p-2" title="Wishlist">
+                        <i class="fa-regular fa-heart text-lg"></i>
+                        <span id="wishlist-count-badge" class="absolute -top-1 -right-1 bg-terracotta-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </button>
+
+                    <!-- Cart Icon & Drawer Trigger -->
+                    <button onclick="navigateTo('cart')" class="relative text-charcoal-900 hover:text-sage-600 transition p-2 flex items-center gap-2" title="View Shopping Cart">
+                        <div class="relative">
+                            <i class="fa-solid fa-bag-shopping text-xl"></i>
+                            <span id="cart-count-badge" class="absolute -top-1.5 -right-2 bg-sage-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-ivory-50">0</span>
+                        </div>
+                        <span id="cart-header-subtotal" class="hidden lg:inline text-xs font-semibold text-charcoal-800">₹0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ivory-100 border-b border-ivory-300 px-4 pt-2 pb-6 space-y-3">
+            <a href="#" onclick="navigateTo('home'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-900 hover:text-sage-600 border-b border-ivory-200">Home</a>
+            <a href="#" onclick="navigateTo('shop'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-900 hover:text-sage-600 border-b border-ivory-200">Shop Collection</a>
+            <a href="#" onclick="navigateTo('categories'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-900 hover:text-sage-600 border-b border-ivory-200">Categories</a>
+            <a href="#" onclick="navigateTo('about'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-900 hover:text-sage-600 border-b border-ivory-200">About PaperNest</a>
+            <a href="#" onclick="navigateTo('contact'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-900 hover:text-sage-600 border-b border-ivory-200">Contact Us</a>
+            <a href="#" onclick="navigateTo('orders'); toggleMobileMenu()" class="block py-2 text-base font-semibold text-sage-700">Orders & Sales Reports</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER FOR ALL SPA PAGES -->
+    <main id="app-viewport" class="flex-grow">
+
+        <!-- ================= PAGE 1: HOME PAGE ================= -->
+        <section id="page-home" class="page-view animate-fade-in">
+            <!-- Hero Banner -->
+            <div class="relative bg-sand/60 overflow-hidden py-16 lg:py-24 border-b border-ivory-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-6">
+                            <span class="inline-block px-3 py-1 bg-sage-100 text-sage-800 text-xs font-semibold tracking-wider uppercase rounded-full">Artisanal Eco-Friendly Craft</span>
+                            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-charcoal-900 leading-tight">
+                                Tactile Elegance for <br>
+                                <span class="italic font-serif text-sage-600">Thoughtful Minds</span>
+                            </h1>
+                            <p class="text-charcoal-800/80 text-base sm:text-lg max-w-xl font-light leading-relaxed">
+                                Curated handbound journals, precision Japanese pens, archival desk brass, and aesthetic paper goods designed to elevate your everyday writing experience.
+                            </p>
+                            <div class="flex flex-wrap gap-4 pt-2">
+                                <button onclick="navigateTo('shop')" class="px-8 py-3.5 bg-sage-600 text-white font-medium text-sm rounded-lg hover:bg-sage-700 transition shadow-md flex items-center gap-2">
+                                    Explore Collection <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                                <button onclick="navigateTo('categories')" class="px-8 py-3.5 border border-charcoal-900 text-charcoal-900 font-medium text-sm rounded-lg hover:bg-charcoal-900 hover:text-white transition">
+                                    Browse Categories
+                                </button>
+                            </div>
+                            <!-- Trust Badges -->
+                            <div class="pt-8 grid grid-cols-3 gap-4 border-t border-ivory-300 text-xs text-charcoal-800/70">
+                                <div><strong class="block text-charcoal-900 font-semibold">100% Recycled</strong> Acid-Free Paper</div>
+                                <div><strong class="block text-charcoal-900 font-semibold">Express Delivery</strong> Pan India Shipping</div>
+                                <div><strong class="block text-charcoal-900 font-semibold">Handcrafted</strong> Small Batch Editions</div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 relative">
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] bg-ivory-200">
+                                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Premium Stationery Desk Set" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.src='https://placehold.co/600x800/F5F0EB/2C302E?text=PaperNest+Stationery'">
+                                <div class="absolute bottom-6 left-6 right-6 bg-ivory-50/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-white/50">
+                                    <p class="text-xs uppercase tracking-widest text-sage-600 font-bold">Featured Product</p>
+                                    <p class="font-serif font-semibold text-charcoal-900 text-base">Linen Hardcover Bullet Journal</p>
+                                    <p class="text-xs text-charcoal-800/80 mt-1">160 GSM Fountain-pen friendly paper · ₹1,299</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Categories Grid -->
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-end mb-10">
+                    <div>
+                        <h2 class="font-serif text-3xl font-normal text-charcoal-900">Explore by Category</h2>
+                        <p class="text-xs text-charcoal-800/70 mt-1">Refined supplies tailored for every creative discipline</p>
+                    </div>
+                    <button onclick="navigateTo('categories')" class="text-sm font-semibold text-sage-700 hover:text-sage-800 flex items-center gap-1">
+                        View All Categories <i class="fa-solid fa-angle-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4" id="home-featured-categories">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+
+            <!-- Best Sellers Carousel / Grid -->
+            <div class="py-16 bg-sand/40 border-y border-ivory-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-xl mx-auto mb-12">
+                        <span class="text-xs uppercase font-bold tracking-widest text-sage-600">Curated Favorites</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-normal text-charcoal-900 mt-1">Best-Selling Stationery</h2>
+                        <p class="text-sm text-charcoal-800/70 mt-2">Loved by writers, illustrators, students, and organized professionals.</p>
+                    </div>
+
+                    <div id="home-bestsellers-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promotional Banner Section -->
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-sage-800 rounded-2xl text-ivory-50 p-8 sm:p-12 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="space-y-4 max-w-xl z-10">
+                        <span class="text-xs uppercase tracking-widest bg-sage-700 px-3 py-1 rounded-full text-ivory-100 font-semibold">Special Seasonal Bundle</span>
+                        <h3 class="font-serif text-3xl sm:text-4xl">The Artisan Desk Set</h3>
+                        <p class="text-ivory-200/90 text-sm leading-relaxed">
+                            Upgrade your study or office workspace. Includes 1 Bullet Journal, 1 Brass Gel Pen, 1 Desk Organizer, and 1 Washi Tape Pack at 20% off.
+                        </p>
+                        <div class="pt-2">
+                            <button onclick="navigateTo('shop'); filterByCategory('Office Stationery')" class="px-6 py-3 bg-ivory-50 text-charcoal-900 font-semibold text-sm rounded-lg hover:bg-ivory-200 transition">
+                                Shop Desk Sets
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-80 h-60 rounded-xl overflow-hidden shadow-lg z-10 bg-sage-700">
+                        <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80" alt="Desk Set Offer" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Testimonials -->
+            <div class="py-16 bg-ivory-100/60 border-t border-ivory-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="font-serif text-3xl text-center font-normal text-charcoal-900 mb-12">Words from Our Community</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-ivory-50 p-6 rounded-xl border border-ivory-200 shadow-sm flex flex-col justify-between">
+                            <p class="text-sm italic text-charcoal-800 leading-relaxed">"The 160 GSM paper quality in PaperNest journals is unmatched. No bleed-through even with my wettest fountain pens and watercolor accents."</p>
+                            <div class="mt-6 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-sage-300 flex items-center justify-center font-bold text-sage-800 text-xs">AR</div>
+                                <div>
+                                    <p class="text-sm font-bold text-charcoal-900">Ananya Roy</p>
+                                    <p class="text-xs text-sage-600">Architect & Bullet Journaler</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-ivory-50 p-6 rounded-xl border border-ivory-200 shadow-sm flex flex-col justify-between">
+                            <p class="text-sm italic text-charcoal-800 leading-relaxed">"Ordering from PaperNest feels like opening a thoughtful gift. The packaging, brass details, and ink flow of their pens are pure perfection."</p>
+                            <div class="mt-6 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-terracotta-500 text-white flex items-center justify-center font-bold text-xs">VM</div>
+                                <div>
+                                    <p class="text-sm font-bold text-charcoal-900">Vikram Mehta</p>
+                                    <p class="text-xs text-sage-600">Calligrapher & Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-ivory-50 p-6 rounded-xl border border-ivory-200 shadow-sm flex flex-col justify-between">
+                            <p class="text-sm italic text-charcoal-800 leading-relaxed">"Super fast shipping to Bangalore! The sales dashboard for placing bulk orders for our design studio was also seamless and hassle-free."</p>
+                            <div class="mt-6 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-sage-700 text-white flex items-center justify-center font-bold text-xs">PS</div>
+                                <div>
+                                    <p class="text-sm font-bold text-charcoal-900">Pooja Sharma</p>
+                                    <p class="text-xs text-sage-600">Creative Lead</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Subscription Section -->
+            <div class="py-16 bg-sand border-t border-ivory-200">
+                <div class="max-w-3xl mx-auto px-4 text-center space-y-4">
+                    <i class="fa-regular fa-envelope text-3xl text-sage-600"></i>
+                    <h3 class="font-serif text-3xl text-charcoal-900">Join the PaperNest Circle</h3>
+                    <p class="text-sm text-charcoal-800/70 max-w-lg mx-auto">Subscribe for early access to limited edition paper goods, calligraphy tips, and 15% off your first stationery purchase.</p>
+                    <form onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto pt-2">
+                        <input type="email" placeholder="Enter your email address" required class="flex-grow px-4 py-3 rounded-lg border border-ivory-300 text-sm focus:outline-none focus:ring-2 focus:ring-sage-600 bg-ivory-50">
+                        <button type="submit" class="px-6 py-3 bg-sage-600 text-white font-medium text-sm rounded-lg hover:bg-sage-700 transition">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 2: SHOP PAGE ================= -->
+        <section id="page-shop" class="page-view hidden animate-fade-in py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center pb-8 border-b border-ivory-200 gap-4">
+                <div>
+                    <h1 class="font-serif text-3xl sm:text-4xl text-charcoal-900 font-normal">Stationery Collection</h1>
+                    <p class="text-xs text-charcoal-800/70 mt-1">Showing all handpicked stationery, writing instruments & desk essentials</p>
+                </div>
+                <!-- Controls: Search & Sort -->
+                <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                    <div class="relative flex-grow sm:flex-grow-0 sm:w-64">
+                        <input type="text" id="shop-search-input" onkeyup="filterProducts()" placeholder="Search products..." class="w-full pl-9 pr-4 py-2 border border-ivory-300 rounded-lg text-sm bg-ivory-50 focus:outline-none focus:ring-2 focus:ring-sage-600">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-xs text-charcoal-800/50"></i>
+                    </div>
+                    <select id="shop-sort-select" onchange="filterProducts()" class="px-3 py-2 border border-ivory-300 rounded-lg text-sm bg-ivory-50 focus:outline-none focus:ring-2 focus:ring-sage-600">
+                        <option value="featured">Sort by: Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Shop Sidebar & Product Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 pt-8">
+                <!-- Filter Sidebar -->
+                <aside class="space-y-6">
+                    <div>
+                        <h3 class="text-xs uppercase tracking-widest font-bold text-sage-700 mb-3">Categories</h3>
+                        <div class="space-y-1.5 text-sm" id="shop-category-filters">
+                            <!-- Populated via JS -->
+                        </div>
+                    </div>
+
+                    <div class="border-t border-ivory-200 pt-6">
+                        <h3 class="text-xs uppercase tracking-widest font-bold text-sage-700 mb-3">Price Filter</h3>
+                        <div class="space-y-3">
+                            <input type="range" id="price-range" min="200" max="2500" step="50" value="2500" oninput="updatePriceLabel(this.value); filterProducts()" class="w-full accent-sage-600">
+                            <div class="flex justify-between text-xs text-charcoal-800 font-medium">
+                                <span>Min: ₹200</span>
+                                <span>Max: <strong id="price-label">₹2,500</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-ivory-200 pt-6">
+                        <button onclick="resetShopFilters()" class="w-full py-2 px-4 border border-sage-600 text-sage-700 text-xs font-semibold rounded-lg hover:bg-sage-600 hover:text-white transition">
+                            Reset All Filters
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Product Cards Grid -->
+                <main class="lg:col-span-3">
+                    <div id="shop-products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        <!-- Dynamic Product Cards populated here -->
+                    </div>
+                    <div id="no-products-msg" class="hidden text-center py-16 text-charcoal-800/70">
+                        <i class="fa-solid fa-box-open text-4xl mb-3 text-sage-600"></i>
+                        <p class="text-base font-semibold">No products found matching your criteria.</p>
+                        <p class="text-xs mt-1">Try clearing filters or searching for another stationery term.</p>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 3: PRODUCT DETAILS PAGE ================= -->
+        <section id="page-product-details" class="page-view hidden animate-fade-in py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button onclick="navigateTo('shop')" class="text-xs font-semibold text-sage-700 hover:text-sage-800 mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Back to Shop
+            </button>
+
+            <div id="product-detail-container" class="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-ivory-50 p-6 sm:p-10 rounded-2xl border border-ivory-200 shadow-sm">
+                <!-- Dynamically Populated via JS -->
+            </div>
+
+            <!-- Related Products Section -->
+            <div class="mt-16 pt-10 border-t border-ivory-200">
+                <h3 class="font-serif text-2xl text-charcoal-900 mb-6">You May Also Love</h3>
+                <div id="related-products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Dynamic related products -->
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 4: CATEGORIES PAGE ================= -->
+        <section id="page-categories" class="page-view hidden animate-fade-in py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs uppercase font-bold tracking-widest text-sage-600">PaperNest Collections</span>
+                <h1 class="font-serif text-4xl text-charcoal-900 mt-1">Browse by Category</h1>
+                <p class="text-sm text-charcoal-800/70 mt-2">Find precision engineered writing tools, journals, art supplies, and desk organization accessories.</p>
+            </div>
+
+            <div id="categories-full-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamic Category Cards generated via JS -->
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 5: SHOPPING CART PAGE ================= -->
+        <section id="page-cart" class="page-view hidden animate-fade-in py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="font-serif text-3xl sm:text-4xl text-charcoal-900 mb-8">Your Shopping Cart</h1>
+
+            <div id="cart-content-wrapper" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Cart Items Table/List -->
+                <div class="lg:col-span-8 space-y-4" id="cart-items-container">
+                    <!-- Dynamically populated cart items -->
+                </div>
+
+                <!-- Order Summary Side Panel -->
+                <div class="lg:col-span-4">
+                    <div class="bg-ivory-50 p-6 rounded-2xl border border-ivory-200 shadow-sm space-y-6">
+                        <h3 class="font-serif text-xl font-semibold text-charcoal-900">Order Summary</h3>
+
+                        <!-- Coupon Input Code -->
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-800 uppercase tracking-wider mb-2">Have a Promo Code?</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="coupon-input" placeholder="e.g. NEST10" class="uppercase flex-grow px-3 py-2 border border-ivory-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-sage-600">
+                                <button onclick="applyCoupon()" class="px-4 py-2 bg-sage-600 text-white text-xs font-semibold rounded-lg hover:bg-sage-700 transition">Apply</button>
+                            </div>
+                            <p id="coupon-msg" class="text-xs mt-1 font-medium"></p>
+                        </div>
+
+                        <!-- Price Breakdown -->
+                        <div class="space-y-3 text-sm border-t border-b border-ivory-200 py-4">
+                            <div class="flex justify-between text-charcoal-800">
+                                <span>Subtotal</span>
+                                <span id="cart-subtotal">₹0</span>
+                            </div>
+                            <div class="flex justify-between text-emerald-700" id="cart-discount-row">
+                                <span>Discount</span>
+                                <span id="cart-discount">-₹0</span>
+                            </div>
+                            <div class="flex justify-between text-charcoal-800">
+                                <span>Shipping Fee</span>
+                                <span id="cart-shipping">₹0</span>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center text-lg font-bold text-charcoal-900">
+                            <span>Total Payable</span>
+                            <span id="cart-final-total" class="font-serif text-2xl text-sage-800">₹0</span>
+                        </div>
+
+                        <button id="cart-checkout-btn" onclick="navigateTo('checkout')" class="w-full py-3.5 bg-sage-600 text-white font-medium text-sm rounded-lg hover:bg-sage-700 transition shadow-md text-center block">
+                            Proceed to Checkout <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+                        </button>
+
+                        <button onclick="navigateTo('shop')" class="w-full text-center text-xs text-sage-700 font-semibold hover:underline">
+                            Continue Shopping
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 6: CHECKOUT PAGE ================= -->
+        <section id="page-checkout" class="page-view hidden animate-fade-in py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="font-serif text-3xl sm:text-4xl text-charcoal-900 mb-8">Checkout & Shipping</h1>
+
+            <form id="checkout-form" onsubmit="handlePlaceOrder(event)" class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- Customer Details Form -->
+                <div class="lg:col-span-7 space-y-6 bg-ivory-50 p-6 sm:p-8 rounded-2xl border border-ivory-200 shadow-sm">
+                    <h2 class="font-serif text-xl font-semibold text-charcoal-900 border-b border-ivory-200 pb-3">1. Delivery Address</h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-800 mb-1">First Name *</label>
+                            <input type="text" id="cust-first-name" required value="Aarav" class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm focus:ring-2 focus:ring-sage-600 bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-800 mb-1">Last Name *</label>
+                            <input type="text" id="cust-last-name" required value="Sharma" class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm focus:ring-2 focus:ring-sage-600 bg-white">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-800 mb-1">Email Address *</label>
+                            <input type="email" id="cust-email" required value="aarav.sharma@example.com" class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm focus:ring-2 focus:ring-sage-600 bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-800 mb-1">Phone Number *</label>
+                            <input type="tel" id="cust-phone" required value="+91 98765 43210" class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm focus:ring-2 focus:ring-sage-600 bg-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-800 mb-1">Street Address *</label>
+                        <input type="text" id="cust-address" required value="42, Heritage Park Avenue, Indiranagar" class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm focus:ring-2 focus:ring-sage-600 bg-white">
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-800 mb-1">City *</label>
+                            <input type="text" id="cust-city" required value="Bengaluru" class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm focus:ring-2 focus:ring-sage-600 bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-800 mb-1">State *</label>
+                            <input type="text" id="cust-state" required value="Karnataka" class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm focus:ring-2 focus:ring-sage-600 bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-800 mb-1">Pincode *</label>
+                            <input type="text" id="cust-pincode" required value="560038" class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm focus:ring-2 focus:ring-sage-600 bg-white">
+                        </div>
+                    </div>
+
+                    <h2 class="font-serif text-xl font-semibold text-charcoal-900 border-b border-ivory-200 pb-3 pt-4">2. Select Payment Method</h2>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 border border-sage-600 rounded-lg bg-sage-50 cursor-pointer">
+                            <input type="radio" name="payment-method" value="COD" checked class="accent-sage-600">
+                            <div class="ml-3">
+                                <span class="block text-sm font-semibold text-charcoal-900">Cash on Delivery (COD)</span>
+                                <span class="block text-xs text-charcoal-800/70">Pay with cash or UPI upon delivery</span>
+                            </div>
+                        </label>
+                        <label class="flex items-center p-3 border border-ivory-300 rounded-lg bg-white cursor-pointer hover:border-sage-300">
+                            <input type="radio" name="payment-method" value="Demo Online Payment" class="accent-sage-600">
+                            <div class="ml-3">
+                                <span class="block text-sm font-semibold text-charcoal-900">Demo Online Payment (UPI / Cards / NetBanking)</span>
+                                <span class="block text-xs text-sage-700 font-medium">✨ Instant Demo Checkout (No Real Card Info Required)</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Order Summary Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-sand p-6 rounded-2xl border border-ivory-200 shadow-sm space-y-4">
+                        <h3 class="font-serif text-xl font-semibold text-charcoal-900">Items in Your Order</h3>
+                        <div id="checkout-items-preview" class="space-y-3 max-h-60 overflow-y-auto pr-2">
+                            <!-- Items populated JS -->
+                        </div>
+
+                        <div class="border-t border-ivory-300 pt-4 space-y-2 text-sm">
+                            <div class="flex justify-between text-charcoal-800">
+                                <span>Subtotal</span>
+                                <span id="checkout-subtotal">₹0</span>
+                            </div>
+                            <div class="flex justify-between text-emerald-700">
+                                <span>Discount</span>
+                                <span id="checkout-discount">-₹0</span>
+                            </div>
+                            <div class="flex justify-between text-charcoal-800">
+                                <span>Shipping</span>
+                                <span id="checkout-shipping">₹0</span>
+                            </div>
+                            <div class="flex justify-between items-center text-lg font-bold text-charcoal-900 pt-2 border-t border-ivory-300">
+                                <span>Total Amount</span>
+                                <span id="checkout-total" class="font-serif text-2xl text-sage-800">₹0</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-sage-600 text-white font-semibold text-sm rounded-lg hover:bg-sage-700 transition shadow-lg text-center">
+                            Place Order & Generate Receipt <i class="fa-solid fa-check text-xs ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+
+        <!-- ================= PAGE 7: ORDER CONFIRMATION PAGE ================= -->
+        <section id="page-order-confirmation" class="page-view hidden animate-fade-in py-12 max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h1 class="font-serif text-3xl sm:text-4xl text-charcoal-900">Thank You for Your Order!</h1>
+                <p class="text-sm text-charcoal-800/80 mt-2">Your stationery order has been received and is being prepared with artisanal care.</p>
+            </div>
+
+            <!-- Printable Receipt Container -->
+            <div id="printable-area" class="bg-ivory-50 p-6 sm:p-10 rounded-2xl border border-ivory-300 shadow-md space-y-8">
+                <div class="flex justify-between items-start border-b border-ivory-300 pb-6">
+                    <div>
+                        <div class="font-serif text-2xl font-bold text-charcoal-900">PaperNest</div>
+                        <p class="text-xs text-sage-700">Artisanal & Fine Stationery</p>
+                        <p class="text-xs text-charcoal-800/70 mt-1">Order Date: <span id="confirm-date">--</span></p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-charcoal-800 uppercase tracking-wider">Order ID</p>
+                        <p id="confirm-order-id" class="font-serif text-xl font-bold text-sage-800">PN-2026-0000</p>
+                        <span id="confirm-payment-badge" class="inline-block px-2.5 py-0.5 bg-sage-100 text-sage-800 text-[10px] font-bold rounded mt-1">COD</span>
+                    </div>
+                </div>
+
+                <!-- Customer Info -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-charcoal-800">
+                    <div>
+                        <strong class="block text-charcoal-900 text-sm font-semibold mb-1">Shipping Address:</strong>
+                        <p id="confirm-cust-name" class="font-medium text-charcoal-900"></p>
+                        <p id="confirm-cust-address"></p>
+                        <p id="confirm-cust-phone" class="mt-1"></p>
+                        <p id="confirm-cust-email"></p>
+                    </div>
+                    <div>
+                        <strong class="block text-charcoal-900 text-sm font-semibold mb-1">Dispatch Details:</strong>
+                        <p>Estimated Delivery: <strong>3 - 5 Business Days</strong></p>
+                        <p class="mt-1">Carrier: Express Surface Logistics</p>
+                    </div>
+                </div>
+
+                <!-- Purchased Items Table -->
+                <div>
+                    <strong class="block text-charcoal-900 text-sm font-semibold mb-3">Order Items Summary:</strong>
+                    <table class="w-full text-left text-xs text-charcoal-800">
+                        <thead class="bg-ivory-200 text-charcoal-900 font-semibold">
+                            <tr>
+                                <th class="p-2.5">Item</th>
+                                <th class="p-2.5 text-center">Qty</th>
+                                <th class="p-2.5 text-right">Price</th>
+                                <th class="p-2.5 text-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="confirm-items-tbody" class="divide-y divide-ivory-200">
+                            <!-- Items rows -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Final Calculations -->
+                <div class="flex justify-end pt-4 border-t border-ivory-300">
+                    <div class="w-64 space-y-1.5 text-xs">
+                        <div class="flex justify-between"><span>Subtotal:</span><span id="confirm-subtotal">₹0</span></div>
+                        <div class="flex justify-between text-emerald-700"><span>Discount:</span><span id="confirm-discount">-₹0</span></div>
+                        <div class="flex justify-between"><span>Shipping:</span><span id="confirm-shipping">₹0</span></div>
+                        <div class="flex justify-between text-sm font-bold text-charcoal-900 pt-2 border-t border-ivory-300">
+                            <span>Paid Amount:</span>
+                            <span id="confirm-total" class="font-serif text-lg text-sage-800">₹0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receipt Actions -->
+            <div class="mt-8 flex flex-wrap gap-4 justify-center no-print">
+                <button onclick="window.print()" class="px-6 py-3 bg-sage-700 text-white text-sm font-semibold rounded-lg hover:bg-sage-800 transition flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i> Print Receipt / Invoice
+                </button>
+                <button onclick="navigateTo('orders')" class="px-6 py-3 border border-charcoal-900 text-charcoal-900 text-sm font-semibold rounded-lg hover:bg-charcoal-900 hover:text-white transition">
+                    View in Orders & Sales Dashboard
+                </button>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 8: ORDER MANAGEMENT & REPORTS PAGE ================= -->
+        <section id="page-order-management" class="page-view hidden animate-fade-in py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center pb-8 border-b border-ivory-200 gap-4">
+                <div>
+                    <h1 class="font-serif text-3xl sm:text-4xl text-charcoal-900">Order Reports & Dashboard</h1>
+                    <p class="text-xs text-charcoal-800/70 mt-1">Real-time order history, customer purchases & sales analytics</p>
+                </div>
+                <button onclick="exportOrdersCSV()" class="px-5 py-2.5 bg-sage-600 text-white text-xs font-semibold rounded-lg hover:bg-sage-700 transition flex items-center gap-2 shadow">
+                    <i class="fa-solid fa-file-csv text-sm"></i> Export CSV Sales Report
+                </button>
+            </div>
+
+            <!-- Sales Summary Dashboard Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-8">
+                <div class="bg-ivory-50 p-5 rounded-xl border border-ivory-200 shadow-sm">
+                    <p class="text-xs font-bold text-sage-700 uppercase tracking-wider">Total Sales Revenue</p>
+                    <p id="dash-total-revenue" class="font-serif text-2xl font-bold text-charcoal-900 mt-2">₹0</p>
+                    <span class="text-[10px] text-emerald-700 font-semibold">Live calculated</span>
+                </div>
+                <div class="bg-ivory-50 p-5 rounded-xl border border-ivory-200 shadow-sm">
+                    <p class="text-xs font-bold text-sage-700 uppercase tracking-wider">Total Orders Placed</p>
+                    <p id="dash-total-orders" class="font-serif text-2xl font-bold text-charcoal-900 mt-2">0</p>
+                    <span class="text-[10px] text-charcoal-800/60">Persistent in localStorage</span>
+                </div>
+                <div class="bg-ivory-50 p-5 rounded-xl border border-ivory-200 shadow-sm">
+                    <p class="text-xs font-bold text-sage-700 uppercase tracking-wider">Avg Order Value</p>
+                    <p id="dash-avg-order" class="font-serif text-2xl font-bold text-charcoal-900 mt-2">₹0</p>
+                    <span class="text-[10px] text-charcoal-800/60">Per customer checkout</span>
+                </div>
+                <div class="bg-ivory-50 p-5 rounded-xl border border-ivory-200 shadow-sm">
+                    <p class="text-xs font-bold text-sage-700 uppercase tracking-wider">Active Inventory Items</p>
+                    <p class="font-serif text-2xl font-bold text-charcoal-900 mt-2">20 Items</p>
+                    <span class="text-[10px] text-sage-600">7 Stationery Categories</span>
+                </div>
+            </div>
+
+            <!-- Order Search and Filters -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <input type="text" id="order-search-input" onkeyup="filterOrdersTable()" placeholder="Search Order ID or Customer Name..." class="flex-grow px-3.5 py-2 border border-ivory-300 rounded-lg text-sm bg-ivory-50 focus:ring-2 focus:ring-sage-600">
+                <select id="order-status-filter" onchange="filterOrdersTable()" class="px-3.5 py-2 border border-ivory-300 rounded-lg text-sm bg-ivory-50 focus:ring-2 focus:ring-sage-600">
+                    <option value="all">All Payment Statuses</option>
+                    <option value="COD">Cash on Delivery</option>
+                    <option value="Demo Online Payment">Demo Online Payment</option>
+                </select>
+            </div>
+
+            <!-- Orders Data Table -->
+            <div class="bg-ivory-50 rounded-xl border border-ivory-300 shadow-sm overflow-x-auto">
+                <table class="w-full text-left text-xs text-charcoal-800">
+                    <thead class="bg-sand text-charcoal-900 uppercase font-semibold text-[11px] border-b border-ivory-300">
+                        <tr>
+                            <th class="p-3.5">Order ID</th>
+                            <th class="p-3.5">Date</th>
+                            <th class="p-3.5">Customer</th>
+                            <th class="p-3.5">Items Purchased</th>
+                            <th class="p-3.5">Payment</th>
+                            <th class="p-3.5 text-right">Amount</th>
+                            <th class="p-3.5 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table-tbody" class="divide-y divide-ivory-200">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 9: ABOUT US PAGE ================= -->
+        <section id="page-about" class="page-view hidden animate-fade-in py-12 max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="text-center space-y-4 mb-12">
+                <span class="text-xs uppercase font-bold tracking-widest text-sage-600">Our Heritage & Craft</span>
+                <h1 class="font-serif text-4xl sm:text-5xl text-charcoal-900">The Story of PaperNest</h1>
+                <p class="text-charcoal-800/80 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+                    Founded with a passion for tactile craftsmanship, PaperNest bridges timeless paper tradition with contemporary minimalist design.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
+                <div class="rounded-2xl overflow-hidden shadow-md h-80 bg-ivory-200">
+                    <img src="https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=800&q=80" alt="Artisan paper studio" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-4 text-sm text-charcoal-800 leading-relaxed">
+                    <h2 class="font-serif text-2xl text-charcoal-900">Crafting Joy in Every Stroke</h2>
+                    <p>
+                        In a world driven by pixels and screens, we believe in the physical magic of ink meeting fine paper. Every journal in our collection is crafted with acid-free, fountain-pen-friendly paper ranging from 120 GSM to 300 GSM watercolor paper.
+                    </p>
+                    <p>
+                        We partner directly with small-batch paper mills and brass artisans to bring you stationery that is built to last a lifetime.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pillars / Values -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-ivory-50 p-6 rounded-xl border border-ivory-200 shadow-sm">
+                    <i class="fa-solid fa-leaf text-2xl text-sage-600 mb-3"></i>
+                    <h3 class="font-serif text-lg font-semibold text-charcoal-900 mb-2">Eco-Conscious</h3>
+                    <p class="text-xs text-charcoal-800/80">Recycled cotton rag paper and plastic-free minimal packaging.</p>
+                </div>
+                <div class="bg-ivory-50 p-6 rounded-xl border border-ivory-200 shadow-sm">
+                    <i class="fa-solid fa-pen-nib text-2xl text-sage-600 mb-3"></i>
+                    <h3 class="font-serif text-lg font-semibold text-charcoal-900 mb-2">Zero Bleed-Through</h3>
+                    <p class="text-xs text-charcoal-800/80">Rigorously tested paper with fountain inks, acrylics, and gel pens.</p>
+                </div>
+                <div class="bg-ivory-50 p-6 rounded-xl border border-ivory-200 shadow-sm">
+                    <i class="fa-solid fa-hand-holding-heart text-2xl text-sage-600 mb-3"></i>
+                    <h3 class="font-serif text-lg font-semibold text-charcoal-900 mb-2">Artisan Support</h3>
+                    <p class="text-xs text-charcoal-800/80">Supporting traditional Indian paper artisans and binderies.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 10: CONTACT US PAGE ================= -->
+        <section id="page-contact" class="page-view hidden animate-fade-in py-12 max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <span class="text-xs uppercase font-bold tracking-widest text-sage-600">Get in Touch</span>
+                <h1 class="font-serif text-4xl text-charcoal-900 mt-1">We’d Love to Hear from You</h1>
+                <p class="text-sm text-charcoal-800/70 mt-2">Questions about bulk custom stationery, order status, or calligraphy workshops?</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Contact Form -->
+                <form onsubmit="handleContactSubmit(event)" class="lg:col-span-7 bg-ivory-50 p-8 rounded-2xl border border-ivory-200 shadow-sm space-y-4">
+                    <h3 class="font-serif text-xl text-charcoal-900 mb-2">Send Us a Message</h3>
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-800 mb-1">Your Full Name *</label>
+                        <input type="text" required class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-sage-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-800 mb-1">Email Address *</label>
+                        <input type="email" required class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-sage-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-800 mb-1">Subject</label>
+                        <input type="text" placeholder="e.g. Bulk Order Query" class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-sage-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-800 mb-1">Message *</label>
+                        <textarea rows="4" required class="w-full px-3.5 py-2.5 border border-ivory-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-sage-600"></textarea>
+                    </div>
+                    <button type="submit" class="px-6 py-3 bg-sage-600 text-white font-medium text-sm rounded-lg hover:bg-sage-700 transition">
+                        Submit Message
+                    </button>
+                </form>
+
+                <!-- Contact Info & FAQ Accordion -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="bg-sand p-6 rounded-2xl border border-ivory-200 space-y-4">
+                        <h4 class="font-serif text-lg font-semibold text-charcoal-900">Direct Support</h4>
+                        <div class="space-y-3 text-xs text-charcoal-800">
+                            <p class="flex items-center gap-3"><i class="fa-solid fa-envelope text-sage-600 text-base"></i> hello@papernest.in</p>
+                            <p class="flex items-center gap-3"><i class="fa-solid fa-phone text-sage-600 text-base"></i> +91 800 123 4567 (Mon - Sat, 10 AM - 6 PM)</p>
+                            <p class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-sage-600 text-base"></i> Studio 14, Crafts Colony, Indiranagar, Bengaluru</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQs Accordion -->
+                    <div class="space-y-3">
+                        <h4 class="font-serif text-lg font-semibold text-charcoal-900">Frequently Asked Questions</h4>
+                        
+                        <details class="group bg-ivory-50 border border-ivory-200 rounded-lg p-3">
+                            <summary class="font-semibold text-xs text-charcoal-900 cursor-pointer flex justify-between items-center">
+                                How long does shipping take?
+                                <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition"></i>
+                            </summary>
+                            <p class="text-xs text-charcoal-800/80 mt-2">Orders are dispatched within 24 hours and delivered in 3-5 business days across India.</p>
+                        </details>
+
+                        <details class="group bg-ivory-50 border border-ivory-200 rounded-lg p-3">
+                            <summary class="font-semibold text-xs text-charcoal-900 cursor-pointer flex justify-between items-center">
+                                Are the journals fountain pen safe?
+                                <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition"></i>
+                            </summary>
+                            <p class="text-xs text-charcoal-800/80 mt-2">Yes! All PaperNest notebooks feature heavy 120-160 GSM acid-free paper engineered to eliminate feathering and ghosting.</p>
+                        </details>
+
+                        <details class="group bg-ivory-50 border border-ivory-200 rounded-lg p-3">
+                            <summary class="font-semibold text-xs text-charcoal-900 cursor-pointer flex justify-between items-center">
+                                Do you accept Cash on Delivery?
+                                <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition"></i>
+                            </summary>
+                            <p class="text-xs text-charcoal-800/80 mt-2">Yes, Cash on Delivery is available across all pincodes in India.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Global Footer -->
+    <footer class="bg-charcoal-900 text-ivory-100 pt-16 pb-12 border-t border-charcoal-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-charcoal-800 text-xs">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-sage-600 text-ivory-50 flex items-center justify-center font-serif text-base font-bold">P</div>
+                        <span class="font-serif text-xl font-bold text-ivory-50">PaperNest</span>
+                    </div>
+                    <p class="text-ivory-300/70 leading-relaxed">Artisanal, eco-friendly stationery goods designed to bring mindfulness and elegance to everyday thoughts.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-sm font-semibold text-ivory-50 mb-3 uppercase tracking-wider">Navigation</h4>
+                    <ul class="space-y-2 text-ivory-300/80">
+                        <li><a href="#" onclick="navigateTo('home'); return false;" class="hover:text-white">Home</a></li>
+                        <li><a href="#" onclick="navigateTo('shop'); return false;" class="hover:text-white">Shop All</a></li>
+                        <li><a href="#" onclick="navigateTo('categories'); return false;" class="hover:text-white">Categories</a></li>
+                        <li><a href="#" onclick="navigateTo('about'); return false;" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" onclick="navigateTo('contact'); return false;" class="hover:text-white">Contact & FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-sm font-semibold text-ivory-50 mb-3 uppercase tracking-wider">Categories</h4>
+                    <ul class="space-y-2 text-ivory-300/80">
+                        <li><a href="#" onclick="filterByCategory('Notebooks')" class="hover:text-white">Handbound Notebooks</a></li>
+                        <li><a href="#" onclick="filterByCategory('Pens')" class="hover:text-white">Fine Gel & Fountain Pens</a></li>
+                        <li><a href="#" onclick="filterByCategory('Planners')" class="hover:text-white">2026 Academic Planners</a></li>
+                        <li><a href="#" onclick="filterByCategory('Art Supplies')" class="hover:text-white">Watercolor & Sketching</a></li>
+                        <li><a href="#" onclick="filterByCategory('Office Stationery')" class="hover:text-white">Desk Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-sm font-semibold text-ivory-50 mb-3 uppercase tracking-wider">Reports & Admin</h4>
+                    <p class="text-ivory-300/70 mb-3">View order history, track status, and export real-time sales reports in CSV format.</p>
+                    <button onclick="navigateTo('orders')" class="px-4 py-2 bg-sage-600 text-white font-medium rounded text-xs hover:bg-sage-700 transition">
+                        Open Orders Dashboard
+                    </button>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-ivory-300/60 gap-4">
+                <p>© 2026 PaperNest Artisanal Goods. All rights reserved. Designed with tactile elegance.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram text-base"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-pinterest text-base"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter text-base"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Search Modal Overlay -->
+    <div id="search-modal" class="fixed inset-0 bg-charcoal-900/60 backdrop-blur-sm z-50 hidden flex items-start justify-center pt-20 px-4">
+        <div class="bg-ivory-50 w-full max-w-2xl rounded-2xl shadow-2xl p-6 border border-ivory-300 animate-fade-in relative">
+            <button onclick="toggleSearchModal()" class="absolute top-4 right-4 text-charcoal-800 hover:text-charcoal-900 p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="font-serif text-xl font-bold text-charcoal-900 mb-4">Search PaperNest Catalog</h3>
+            <div class="relative">
+                <input type="text" id="modal-search-input" onkeyup="handleModalSearch(this.value)" placeholder="Search journals, fountain pens, planners..." class="w-full pl-10 pr-4 py-3 border border-ivory-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sage-600 bg-white">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-charcoal-800/50"></i>
+            </div>
+            <div id="modal-search-results" class="mt-4 max-h-80 overflow-y-auto divide-y divide-ivory-200">
+                <!-- Search results injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+
+    <script>
+        // =========================================================================
+        // 1. DATA MODELS & STATE MANAGEMENT
+        // =========================================================================
+
+        const CATEGORIES = [
+            { id: 'Notebooks', name: 'Notebooks & Bullet Journals', icon: 'fa-book-open', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80' },
+            { id: 'Pens', name: 'Pens & Calligraphy', icon: 'fa-pen-nib', img: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=80' },
+            { id: 'Pencils', name: 'Pencils & Drafting', icon: 'fa-pencil', img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=80' },
+            { id: 'Art Supplies', name: 'Art & Painting Supplies', icon: 'fa-palette', img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=80' },
+            { id: 'Planners', name: 'Planners & Organizers', icon: 'fa-calendar-days', img: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=400&q=80' },
+            { id: 'School Supplies', name: 'School Supplies', icon: 'fa-graduation-cap', img: 'https://images.unsplash.com/photo-1585336261026-8f5786372966?auto=format&fit=crop&w=400&q=80' },
+            { id: 'Office Stationery', name: 'Office & Desk Brass', icon: 'fa-briefcase', img: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=400&q=80' }
+        ];
+
+        // 20 Sample Stationery Products in Indian Rupees (₹)
+        const PRODUCTS = [
+            {
+                id: 'pn-101',
+                name: 'Handbound Linen Bullet Journal (160 GSM)',
+                category: 'Notebooks',
+                price: 1299,
+                rating: 4.9,
+                reviews: 128,
+                stock: 24,
+                bestSeller: true,
+                featured: true,
+                isNew: true,
+                image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80',
+                description: 'Ultra-thick 160 GSM acid-free bamboo paper. Zero ghosting or bleed-through, featuring back envelope pocket and dual silk ribbon bookmarks.'
+            },
+            {
+                id: 'pn-102',
+                name: 'Japanese Minimalist Gel Pens (Set of 6)',
+                category: 'Pens',
+                price: 499,
+                rating: 4.8,
+                reviews: 95,
+                stock: 40,
+                bestSeller: true,
+                featured: true,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80',
+                description: 'Precision 0.5mm quick-dry black gel ink. Matte soft-touch barrel for fatigue-free extended writing sessions.'
+            },
+            {
+                id: 'pn-103',
+                name: 'Solid Wood Desk Organizer & Dock',
+                category: 'Office Stationery',
+                price: 1499,
+                rating: 4.7,
+                reviews: 42,
+                stock: 12,
+                bestSeller: false,
+                featured: true,
+                isNew: true,
+                image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80',
+                description: 'Carved from sustainable walnut wood. Features slots for pens, business cards, sticky notes, and a tablet/smartphone rest.'
+            },
+            {
+                id: 'pn-104',
+                name: 'Aesthetic Pastels Academic Planner 2026',
+                category: 'Planners',
+                price: 1199,
+                rating: 4.9,
+                reviews: 210,
+                stock: 18,
+                bestSeller: true,
+                featured: true,
+                isNew: true,
+                image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80',
+                description: 'Dated 12-month planner featuring weekly productivity spreads, monthly goal setting, habit trackers, and sticker pages.'
+            },
+            {
+                id: 'pn-105',
+                name: 'Dual-Tip Aesthetic Brush Markers (12 Colors)',
+                category: 'Art Supplies',
+                price: 899,
+                rating: 4.6,
+                reviews: 64,
+                stock: 30,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80',
+                description: 'Flexible Japanese nylon brush tip on one end and 0.4mm fine tip on the other. Water-based blendable non-toxic inks.'
+            },
+            {
+                id: 'pn-106',
+                name: 'Brass Executive Fountain Pen (Fine Nib)',
+                category: 'Pens',
+                price: 1850,
+                rating: 5.0,
+                reviews: 38,
+                stock: 15,
+                bestSeller: true,
+                featured: true,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80',
+                description: 'Solid brass body with golden clip and iridium fine nib. Develops a unique natural vintage patina over time.'
+            },
+            {
+                id: 'pn-107',
+                name: 'Architectural Drafting Pencil (0.5mm)',
+                category: 'Pencils',
+                price: 650,
+                rating: 4.7,
+                reviews: 53,
+                stock: 22,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80',
+                description: 'Full metal weighted barrel with knurled grip for ultimate balance and technical accuracy in sketch and writing.'
+            },
+            {
+                id: 'pn-108',
+                name: 'Sage Green Leatherette Portfolio Folder',
+                category: 'Office Stationery',
+                price: 1599,
+                rating: 4.8,
+                reviews: 29,
+                stock: 10,
+                bestSeller: false,
+                featured: false,
+                isNew: true,
+                image: 'https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=600&q=80',
+                description: 'Holds A4 documents, notepad, tablet, business cards, and pen loop in a sleek minimal magnetic enclosure.'
+            },
+            {
+                id: 'pn-109',
+                name: 'Watercolor Botanical Sketchbook (300 GSM)',
+                category: 'Art Supplies',
+                price: 999,
+                rating: 4.9,
+                reviews: 87,
+                stock: 16,
+                bestSeller: true,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80',
+                description: '100% cotton cold-press 300 GSM watercolor paper. Micro-perforated pages with lie-flat hardcover binding.'
+            },
+            {
+                id: 'pn-110',
+                name: 'Aesthetic Sticky Notes & Memo Pads Bundle',
+                category: 'School Supplies',
+                price: 349,
+                rating: 4.5,
+                reviews: 112,
+                stock: 50,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1585336261026-8f5786372966?auto=format&fit=crop&w=600&q=80',
+                description: 'Set of 6 muted pastel memo blocks (300 total sheets) with strong repositionable eco-friendly adhesive.'
+            },
+            {
+                id: 'pn-111',
+                name: 'Kraft Paper Grid Notebook - A5',
+                category: 'Notebooks',
+                price: 399,
+                rating: 4.6,
+                reviews: 74,
+                stock: 35,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80',
+                description: 'Minimalist brown kraft card cover with 5mm light gray grid dots. 120 pages of 100 GSM recycled paper.'
+            },
+            {
+                id: 'pn-112',
+                name: 'Mid-Century Modern Brass Scissors',
+                category: 'Office Stationery',
+                price: 799,
+                rating: 4.8,
+                reviews: 41,
+                stock: 14,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80',
+                description: 'Stainless steel blades with brushed gold brass handles for clean precision paper craft cutting.'
+            },
+            {
+                id: 'pn-113',
+                name: 'Minimalist Daily Productivity Planner',
+                category: 'Planners',
+                price: 849,
+                rating: 4.7,
+                reviews: 93,
+                stock: 25,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80',
+                description: 'Undated daily layout focusing on top 3 priorities, hourly scheduling blocks, and reflection sections.'
+            },
+            {
+                id: 'pn-114',
+                name: 'Vintage Washi Tape Collection (Set of 10)',
+                category: 'Art Supplies',
+                price: 599,
+                rating: 4.9,
+                reviews: 156,
+                stock: 30,
+                bestSeller: font = true,
+                featured: false,
+                isNew: true,
+                image: 'https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=600&q=80',
+                description: 'Japanese rice paper masking tape with foil botanical prints. Removable without leaving adhesive residue.'
+            },
+            {
+                id: 'pn-115',
+                name: 'Ergonomic Wooden Mechanical Pencil',
+                category: 'Pencils',
+                price: 550,
+                rating: 4.6,
+                reviews: 31,
+                stock: 19,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80',
+                description: 'Natural maple wood body casing with 0.7mm lead feed mechanism and built-in eraser core.'
+            },
+            {
+                id: 'pn-116',
+                name: 'Premium Linen Spiral Notebook (B5 Grid)',
+                category: 'Notebooks',
+                price: 649,
+                rating: 4.8,
+                reviews: 82,
+                stock: 20,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80',
+                description: 'Gold double-spiral binder with linen texture hardcover. Ideal for college lectures and project design.'
+            },
+            {
+                id: 'pn-117',
+                name: 'Aesthetic Pastel Highlighters (Set of 6)',
+                category: 'School Supplies',
+                price: 399,
+                rating: 4.7,
+                reviews: 140,
+                stock: 45,
+                bestSeller: true,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1585336261026-8f5786372966?auto=format&fit=crop&w=600&q=80',
+                description: 'Soft non-fluorescent pastel shades that highlight text clearly without soaking through paper.'
+            },
+            {
+                id: 'pn-118',
+                name: 'Canvas & Leather Roll Pencil Case',
+                category: 'School Supplies',
+                price: 799,
+                rating: 4.8,
+                reviews: 49,
+                stock: 18,
+                bestSeller: false,
+                featured: false,
+                isNew: true,
+                image: 'https://images.unsplash.com/photo-1585336261026-8f5786372966?auto=format&fit=crop&w=600&q=80',
+                description: 'Heavy duty olive canvas with genuine leather tie strap. Holds up to 20 pens, brushes, or pencils safely.'
+            },
+            {
+                id: 'pn-119',
+                name: 'Wax Seal Stamp Set with Brass Spoon',
+                category: 'Office Stationery',
+                price: 1299,
+                rating: 4.9,
+                reviews: 67,
+                stock: 11,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80',
+                description: 'Includes 1 botanical brass stamp head, wooden handle, melting spoon, tea candles, and 100 wax beads.'
+            },
+            {
+                id: 'pn-120',
+                name: 'Hardcover Habit Tracker Journal',
+                category: 'Planners',
+                price: 749,
+                rating: 4.7,
+                reviews: 58,
+                stock: 22,
+                bestSeller: false,
+                featured: false,
+                isNew: false,
+                image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80',
+                description: 'Visual tracking spreads for habits, wellness, reading lists, and financial budgeting goals.'
+            }
+        ];
+
+        // Persistent LocalStorage state variables
+        let cart = JSON.parse(localStorage.getItem('papernest_cart')) || [
+            { productId: 'pn-101', quantity: 1 },
+            { productId: 'pn-102', quantity: 2 }
+        ];
+
+        let orders = JSON.parse(localStorage.getItem('papernest_orders')) || [
+            {
+                orderId: 'PN-2026-8941',
+                date: '2026-10-10',
+                customer: {
+                    firstName: 'Ananya',
+                    lastName: 'Roy',
+                    email: 'ananya.roy@example.com',
+                    phone: '+91 98112 34567',
+                    address: '12 Green Park Road',
+                    city: 'New Delhi',
+                    state: 'Delhi',
+                    pincode: '110016'
+                },
+                items: [
+                    { productId: 'pn-101', name: 'Handbound Linen Bullet Journal (160 GSM)', price: 1299, quantity: 1 },
+                    { productId: 'pn-106', name: 'Brass Executive Fountain Pen (Fine Nib)', price: 1850, quantity: 1 }
+                ],
+                subtotal: 3149,
+                discount: 315,
+                shipping: 0,
+                total: 2834,
+                paymentMethod: 'Demo Online Payment',
+                status: 'Completed'
+            }
+        ];
+
+        let wishlist = JSON.parse(localStorage.getItem('papernest_wishlist')) || [];
+        let activeDiscountPercentage = 0;
+        let activePage = 'home';
+        let currentSelectedProduct = PRODUCTS[0];
+
+
+        // =========================================================================
+        // 2. ROUTING & PAGE NAVIGATION
+        // =========================================================================
+
+        function navigateTo(pageId, options = {}) {
+            activePage = pageId;
+
+            // Hide all pages
+            document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
+
+            // Show selected page
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update Header nav links active status
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.dataset.pageId === pageId) {
+                    link.classList.add('text-sage-600', 'font-semibold');
+                    link.classList.remove('text-charcoal-900');
+                } else {
+                    link.classList.remove('text-sage-600', 'font-semibold');
+                    link.classList.add('text-charcoal-900');
+                }
+            });
+
+            // Trigger specific page renderers
+            if (pageId === 'home') renderHomePage();
+            if (pageId === 'shop') renderShopPage(options.category);
+            if (pageId === 'product-details') renderProductDetailsPage(options.productId);
+            if (pageId === 'categories') renderCategoriesPage();
+            if (pageId === 'cart') renderCartPage();
+            if (pageId === 'checkout') renderCheckoutPage();
+            if (pageId === 'orders') renderOrdersPage();
+
+            updateBadges();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+
+        // =========================================================================
+        // 3. RENDERERS & PAGE LOGIC
+        // =========================================================================
+
+        // --- HOME PAGE RENDERER ---
+        function renderHomePage() {
+            // Featured Categories Grid
+            const catContainer = document.getElementById('home-featured-categories');
+            catContainer.innerHTML = CATEGORIES.map(cat => `
+                <div onclick="filterByCategory('${cat.id}')" class="bg-ivory-50 p-4 rounded-xl border border-ivory-200 text-center hover:border-sage-600 transition cursor-pointer group shadow-sm">
+                    <div class="w-12 h-12 bg-sage-100 text-sage-800 rounded-full flex items-center justify-center mx-auto mb-2 text-lg group-hover:bg-sage-600 group-hover:text-white transition">
+                        <i class="fa-solid ${cat.icon}"></i>
+                    </div>
+                    <p class="text-xs font-semibold text-charcoal-900">${cat.id}</p>
+                </div>
+            `).join('');
+
+            // Bestsellers Grid
+            const bestSellers = PRODUCTS.filter(p => p.bestSeller).slice(0, 4);
+            const bestGrid = document.getElementById('home-bestsellers-grid');
+            bestGrid.innerHTML = bestSellers.map(p => createProductCardHTML(p)).join('');
+        }
+
+        // --- SHOP PAGE RENDERER ---
+        function renderShopPage(initialCategory = null) {
+            // Render Sidebar Categories
+            const catFiltersContainer = document.getElementById('shop-category-filters');
+            catFiltersContainer.innerHTML = `
+                <button onclick="selectShopCategory('all')" class="shop-cat-btn w-full text-left px-2 py-1 rounded hover:bg-sand text-charcoal-900 font-medium" data-cat="all">All Items (${PRODUCTS.length})</button>
+                ${CATEGORIES.map(c => `
+                    <button onclick="selectShopCategory('${c.id}')" class="shop-cat-btn w-full text-left px-2 py-1 rounded hover:bg-sand text-charcoal-800/80" data-cat="${c.id}">
+                        ${c.id} (${PRODUCTS.filter(p => p.category === c.id).length})
+                    </button>
+                `).join('')}
+            `;
+
+            if (initialCategory) {
+                selectShopCategory(initialCategory);
+            } else {
+                filterProducts();
+            }
+        }
+
+        let currentShopCat = 'all';
+
+        function selectShopCategory(catId) {
+            currentShopCat = catId;
+            document.querySelectorAll('.shop-cat-btn').forEach(btn => {
+                if (btn.dataset.cat === catId) {
+                    btn.classList.add('bg-sage-100', 'text-sage-800', 'font-bold');
+                } else {
+                    btn.classList.remove('bg-sage-100', 'text-sage-800', 'font-bold');
+                }
+            });
+            filterProducts();
+        }
+
+        function filterByCategory(catId) {
+            navigateTo('shop', { category: catId });
+        }
+
+        function filterProducts() {
+            const searchTerm = document.getElementById('shop-search-input').value.toLowerCase();
+            const maxPrice = parseFloat(document.getElementById('price-range').value);
+            const sortBy = document.getElementById('shop-sort-select').value;
+
+            let filtered = PRODUCTS.filter(p => {
+                const matchesCat = (currentShopCat === 'all' || p.category === currentShopCat);
+                const matchesSearch = p.name.toLowerCase().includes(searchTerm) || p.description.toLowerCase().includes(searchTerm);
+                const matchesPrice = p.price <= maxPrice;
+                return matchesCat && matchesSearch && matchesPrice;
+            });
+
+            // Sorting
+            if (sortBy === 'price-low') filtered.sort((a, b) => a.price - b.price);
+            if (sortBy === 'price-high') filtered.sort((a, b) => b.price - a.price);
+            if (sortBy === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+
+            const grid = document.getElementById('shop-products-grid');
+            const noMsg = document.getElementById('no-products-msg');
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noMsg.classList.remove('hidden');
+            } else {
+                noMsg.classList.add('hidden');
+                grid.innerHTML = filtered.map(p => createProductCardHTML(p)).join('');
+            }
+        }
+
+        function updatePriceLabel(val) {
+            document.getElementById('price-label').textContent = `₹${parseInt(val).toLocaleString('en-IN')}`;
+        }
+
+        function resetShopFilters() {
+            document.getElementById('shop-search-input').value = '';
+            document.getElementById('price-range').value = 2500;
+            updatePriceLabel(2500);
+            document.getElementById('shop-sort-select').value = 'featured';
+            selectShopCategory('all');
+        }
+
+        // --- PRODUCT CARD HTML GENERATOR ---
+        function createProductCardHTML(product) {
+            const isWish = wishlist.includes(product.id);
+            return `
+                <div class="product-card bg-ivory-50 rounded-xl border border-ivory-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="relative bg-sand/50 h-56 overflow-hidden cursor-pointer" onclick="navigateTo('product-details', {productId: '${product.id}'})">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/F5F0EB/2C302E?text=PaperNest'">
+                        ${product.isNew ? `<span class="absolute top-3 left-3 bg-sage-700 text-white text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded">New</span>` : ''}
+                        ${product.bestSeller ? `<span class="absolute top-3 left-3 bg-terracotta-500 text-white text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded">Bestseller</span>` : ''}
+                        
+                        <button onclick="event.stopPropagation(); toggleWishlist('${product.id}')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-ivory-50/80 backdrop-blur text-charcoal-900 flex items-center justify-center hover:bg-white transition">
+                            <i class="${isWish ? 'fa-solid text-terracotta-500' : 'fa-regular'} fa-heart text-sm"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-[10px] uppercase font-bold tracking-wider text-sage-600">${product.category}</span>
+                            <h3 onclick="navigateTo('product-details', {productId: '${product.id}'})" class="font-serif text-base font-semibold text-charcoal-900 hover:text-sage-700 transition cursor-pointer line-clamp-1">${product.name}</h3>
+                            <div class="flex items-center gap-1 mt-1 text-xs text-amber-600">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="font-semibold text-charcoal-900">${product.rating}</span>
+                                <span class="text-charcoal-800/50">(${product.reviews})</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-ivory-200">
+                            <span class="font-serif text-lg font-bold text-charcoal-900">₹${product.price.toLocaleString('en-IN')}</span>
+                            <button onclick="addToCart('${product.id}')" class="px-3.5 py-1.5 bg-sage-600 text-white text-xs font-semibold rounded-lg hover:bg-sage-700 transition flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-cart-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+
+        // --- PRODUCT DETAILS PAGE RENDERER ---
+        function renderProductDetailsPage(productId) {
+            const product = PRODUCTS.find(p => p.id === productId) || PRODUCTS[0];
+            currentSelectedProduct = product;
+
+            const container = document.getElementById('product-detail-container');
+            container.innerHTML = `
+                <div class="lg:col-span-6">
+                    <div class="rounded-xl overflow-hidden bg-sand aspect-square shadow-inner border border-ivory-200">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-sage-600">${product.category}</span>
+                        <h1 class="font-serif text-3xl font-semibold text-charcoal-900 mt-1">${product.name}</h1>
+                        
+                        <div class="flex items-center gap-2 mt-2 text-sm text-amber-600">
+                            <i class="fa-solid fa-star"></i>
+                            <span class="font-bold text-charcoal-900">${product.rating}</span>
+                            <span class="text-charcoal-800/60">(${product.reviews} verified customer reviews)</span>
+                        </div>
+
+                        <div class="mt-4 font-serif text-3xl font-bold text-sage-800">
+                            ₹${product.price.toLocaleString('en-IN')}
+                            <span class="text-xs font-sans text-emerald-700 ml-2 font-normal">Inclusive of all taxes</span>
+                        </div>
+
+                        <p class="text-sm text-charcoal-800/80 mt-4 leading-relaxed">${product.description}</p>
+
+                        <div class="mt-4 flex items-center gap-2 text-xs font-semibold">
+                            <span class="w-2.5 h-2.5 rounded-full ${product.stock > 0 ? 'bg-emerald-500' : 'bg-red-500'}"></span>
+                            <span>${product.stock > 0 ? `In Stock (${product.stock} units left)` : 'Out of Stock'}</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 pt-6 border-t border-ivory-200">
+                        <div class="flex items-center gap-4">
+                            <label class="text-xs font-bold text-charcoal-800 uppercase tracking-wider">Quantity:</label>
+                            <div class="flex items-center border border-ivory-300 rounded-lg bg-white overflow-hidden">
+                                <button onclick="adjustDetailQty(-1)" class="px-3 py-2 text-charcoal-800 hover:bg-sand transition">-</button>
+                                <span id="detail-qty-val" class="px-4 py-2 text-sm font-bold text-charcoal-900">1</span>
+                                <button onclick="adjustDetailQty(1)" class="px-3 py-2 text-charcoal-800 hover:bg-sand transition">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <button onclick="addSelectedDetailToCart()" class="flex-grow py-3.5 bg-sage-600 text-white font-semibold text-sm rounded-lg hover:bg-sage-700 transition shadow-md flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-bag-shopping"></i> Add to Cart
+                            </button>
+                            <button onclick="toggleWishlist('${product.id}')" class="px-4 py-3.5 border border-ivory-300 rounded-lg hover:bg-sand text-charcoal-900">
+                                <i class="fa-regular fa-heart text-base"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-sand/60 p-4 rounded-xl text-xs space-y-2 text-charcoal-800">
+                        <p class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-sage-600"></i> Free Express Shipping above ₹999 across India</p>
+                        <p class="flex items-center gap-2"><i class="fa-solid fa-rotate-left text-sage-600"></i> 7 Days Easy Returns & Exchanges</p>
+                    </div>
+                </div>
+            `;
+
+            // Related Products
+            const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+            document.getElementById('related-products-grid').innerHTML = related.map(p => createProductCardHTML(p)).join('');
+        }
+
+        let detailQty = 1;
+        function adjustDetailQty(delta) {
+            detailQty = Math.max(1, Math.min(currentSelectedProduct.stock, detailQty + delta));
+            const elem = document.getElementById('detail-qty-val');
+            if (elem) elem.textContent = detailQty;
+        }
+
+        function addSelectedDetailToCart() {
+            addToCart(currentSelectedProduct.id, detailQty);
+        }
+
+        // --- CATEGORIES PAGE RENDERER ---
+        function renderCategoriesPage() {
+            const grid = document.getElementById('categories-full-grid');
+            grid.innerHTML = CATEGORIES.map(cat => {
+                const count = PRODUCTS.filter(p => p.category === cat.id).length;
+                return `
+                    <div onclick="filterByCategory('${cat.id}')" class="group relative rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-[4/3] bg-charcoal-900">
+                        <img src="${cat.img}" alt="${cat.name}" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/90 via-charcoal-900/30 to-transparent p-6 flex flex-col justify-end text-white">
+                            <span class="text-xs uppercase tracking-widest font-bold text-sage-300">${count} Products</span>
+                            <h3 class="font-serif text-2xl font-semibold mt-1">${cat.name}</h3>
+                            <span class="text-xs font-semibold text-ivory-200 mt-2 flex items-center gap-1 group-hover:translate-x-1 transition">
+                                Explore Collection <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+
+        // =========================================================================
+        // 4. CART & CHECKOUT LOGIC
+        // =========================================================================
+
+        function addToCart(productId, qty = 1) {
+            const existing = cart.find(item => item.productId === productId);
+            if (existing) {
+                existing.quantity += qty;
+            } else {
+                cart.push({ productId, quantity: qty });
+            }
+            saveCartState();
+            showToast('Item added to your shopping cart!');
+        }
+
+        function updateCartQty(productId, delta) {
+            const item = cart.find(i => i.productId === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.productId !== productId);
+                }
+            }
+            saveCartState();
+            renderCartPage();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.productId !== productId);
+            saveCartState();
+            renderCartPage();
+            showToast('Item removed from cart.');
+        }
+
+        function saveCartState() {
+            localStorage.setItem('papernest_cart', JSON.stringify(cart));
+            updateBadges();
+        }
+
+        function calculateCartTotals() {
+            let subtotal = 0;
+            const items = cart.map(item => {
+                const prod = PRODUCTS.find(p => p.id === item.productId);
+                if (prod) {
+                    subtotal += prod.price * item.quantity;
+                }
+                return { ...prod, quantity: item.quantity };
+            });
+
+            const discount = Math.round((subtotal * activeDiscountPercentage) / 100);
+            const shipping = (subtotal > 999 || subtotal === 0) ? 0 : 99;
+            const finalTotal = Math.max(0, subtotal - discount + shipping);
+
+            return { items, subtotal, discount, shipping, finalTotal };
+        }
+
+        function renderCartPage() {
+            const { items, subtotal, discount, shipping, finalTotal } = calculateCartTotals();
+            const container = document.getElementById('cart-items-container');
+
+            if (items.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-ivory-50 p-12 text-center rounded-2xl border border-ivory-200">
+                        <i class="fa-solid fa-basket-shopping text-5xl text-sage-300 mb-4"></i>
+                        <h3 class="font-serif text-2xl text-charcoal-900 font-semibold">Your cart is empty</h3>
+                        <p class="text-xs text-charcoal-800/70 mt-1 mb-6">Discover our artisanal notebooks, fountain pens, and desk accessories.</p>
+                        <button onclick="navigateTo('shop')" class="px-6 py-3 bg-sage-600 text-white font-medium text-xs rounded-lg hover:bg-sage-700 transition">
+                            Explore Stationery Shop
+                        </button>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = items.map(item => `
+                    <div class="bg-ivory-50 p-4 sm:p-5 rounded-2xl border border-ivory-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-4 w-full sm:w-auto">
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg bg-sand flex-shrink-0">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold text-sage-600">${item.category}</span>
+                                <h4 class="font-serif text-sm font-semibold text-charcoal-900">${item.name}</h4>
+                                <p class="text-xs font-bold text-sage-800 mt-0.5">₹${item.price.toLocaleString('en-IN')}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between w-full sm:w-auto gap-6">
+                            <div class="flex items-center border border-ivory-300 rounded-lg bg-white">
+                                <button onclick="updateCartQty('${item.id}', -1)" class="px-3 py-1 text-charcoal-800 hover:bg-sand transition">-</button>
+                                <span class="px-3 py-1 text-xs font-bold text-charcoal-900">${item.quantity}</span>
+                                <button onclick="updateCartQty('${item.id}', 1)" class="px-3 py-1 text-charcoal-800 hover:bg-sand transition">+</button>
+                            </div>
+
+                            <span class="font-serif text-base font-bold text-charcoal-900 w-24 text-right">
+                                ₹${(item.price * item.quantity).toLocaleString('en-IN')}
+                            </span>
+
+                            <button onclick="removeFromCart('${item.id}')" class="text-charcoal-800/40 hover:text-red-600 transition p-1">
+                                <i class="fa-solid fa-trash-can text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            document.getElementById('cart-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+            document.getElementById('cart-discount').textContent = `-₹${discount.toLocaleString('en-IN')}`;
+            document.getElementById('cart-shipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
+            document.getElementById('cart-final-total').textContent = `₹${finalTotal.toLocaleString('en-IN')}`;
+
+            const checkoutBtn = document.getElementById('cart-checkout-btn');
+            if (items.length === 0) {
+                checkoutBtn.classList.add('opacity-50', 'pointer-events-none');
+            } else {
+                checkoutBtn.classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+
+        function applyCoupon() {
+            const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+            const msg = document.getElementById('coupon-msg');
+
+            if (code === 'NEST10' || code === 'PAPER10') {
+                activeDiscountPercentage = 10;
+                msg.textContent = '✨ Coupon NEST10 applied! 10% discount applied.';
+                msg.className = 'text-xs mt-1 font-medium text-emerald-700';
+            } else if (code === 'WELCOME15') {
+                activeDiscountPercentage = 15;
+                msg.textContent = '✨ Coupon WELCOME15 applied! 15% discount applied.';
+                msg.className = 'text-xs mt-1 font-medium text-emerald-700';
+            } else {
+                activeDiscountPercentage = 0;
+                msg.textContent = 'Invalid promo code. Try "NEST10" or "WELCOME15".';
+                msg.className = 'text-xs mt-1 font-medium text-red-600';
+            }
+            renderCartPage();
+        }
+
+        function renderCheckoutPage() {
+            const { items, subtotal, discount, shipping, finalTotal } = calculateCartTotals();
+            const preview = document.getElementById('checkout-items-preview');
+
+            preview.innerHTML = items.map(item => `
+                <div class="flex justify-between items-center text-xs">
+                    <span class="font-medium text-charcoal-900">${item.name} × ${item.quantity}</span>
+                    <span class="font-bold">₹${(item.price * item.quantity).toLocaleString('en-IN')}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('checkout-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+            document.getElementById('checkout-discount').textContent = `-₹${discount.toLocaleString('en-IN')}`;
+            document.getElementById('checkout-shipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
+            document.getElementById('checkout-total').textContent = `₹${finalTotal.toLocaleString('en-IN')}`;
+        }
+
+
+        // --- ORDER PLACEMENT ---
+        function handlePlaceOrder(e) {
+            e.preventDefault();
+            const { items, subtotal, discount, shipping, finalTotal } = calculateCartTotals();
+
+            if (items.length === 0) {
+                showToast('Your cart is empty. Add items before checking out.');
+                return;
+            }
+
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+            const orderId = 'PN-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+            const dateStr = new Date().toISOString().split('T')[0];
+
+            const newOrder = {
+                orderId,
+                date: dateStr,
+                customer: {
+                    firstName: document.getElementById('cust-first-name').value,
+                    lastName: document.getElementById('cust-last-name').value,
+                    email: document.getElementById('cust-email').value,
+                    phone: document.getElementById('cust-phone').value,
+                    address: document.getElementById('cust-address').value,
+                    city: document.getElementById('cust-city').value,
+                    state: document.getElementById('cust-state').value,
+                    pincode: document.getElementById('cust-pincode').value
+                },
+                items: items.map(i => ({ productId: i.id, name: i.name, price: i.price, quantity: i.quantity })),
+                subtotal,
+                discount,
+                shipping,
+                total: finalTotal,
+                paymentMethod,
+                status: 'Completed'
+            };
+
+            orders.unshift(newOrder);
+            localStorage.setItem('papernest_orders', JSON.stringify(orders));
+
+            // Clear Cart
+            cart = [];
+            saveCartState();
+
+            // Populate Order Confirmation Page
+            renderConfirmationPage(newOrder);
+            navigateTo('order-confirmation');
+        }
+
+        function renderConfirmationPage(order) {
+            document.getElementById('confirm-order-id').textContent = order.orderId;
+            document.getElementById('confirm-date').textContent = order.date;
+            document.getElementById('confirm-payment-badge').textContent = order.paymentMethod;
+            
+            document.getElementById('confirm-cust-name').textContent = `${order.customer.firstName} ${order.customer.lastName}`;
+            document.getElementById('confirm-cust-address').textContent = `${order.customer.address}, ${order.customer.city}, ${order.customer.state} - ${order.customer.pincode}`;
+            document.getElementById('confirm-cust-phone').textContent = `Phone: ${order.customer.phone}`;
+            document.getElementById('confirm-cust-email').textContent = `Email: ${order.customer.email}`;
+
+            const tbody = document.getElementById('confirm-items-tbody');
+            tbody.innerHTML = order.items.map(item => `
+                <tr>
+                    <td class="p-2.5 font-medium">${item.name}</td>
+                    <td class="p-2.5 text-center">${item.quantity}</td>
+                    <td class="p-2.5 text-right">₹${item.price.toLocaleString('en-IN')}</td>
+                    <td class="p-2.5 text-right font-bold">₹${(item.price * item.quantity).toLocaleString('en-IN')}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('confirm-subtotal').textContent = `₹${order.subtotal.toLocaleString('en-IN')}`;
+            document.getElementById('confirm-discount').textContent = `-₹${order.discount.toLocaleString('en-IN')}`;
+            document.getElementById('confirm-shipping').textContent = order.shipping === 0 ? 'FREE' : `₹${order.shipping}`;
+            document.getElementById('confirm-total').textContent = `₹${order.total.toLocaleString('en-IN')}`;
+        }
+
+
+        // =========================================================================
+        // 5. ORDERS MANAGEMENT & CSV EXPORT REPORT
+        // =========================================================================
+
+        function renderOrdersPage() {
+            // Recalculate Dashboard Stats
+            const totalRev = orders.reduce((acc, o) => acc + o.total, 0);
+            const totalOrders = orders.length;
+            const avgOrder = totalOrders > 0 ? Math.round(totalRev / totalOrders) : 0;
+
+            document.getElementById('dash-total-revenue').textContent = `₹${totalRev.toLocaleString('en-IN')}`;
+            document.getElementById('dash-total-orders').textContent = totalOrders;
+            document.getElementById('dash-avg-order').textContent = `₹${avgOrder.toLocaleString('en-IN')}`;
+
+            filterOrdersTable();
+        }
+
+        function filterOrdersTable() {
+            const query = document.getElementById('order-search-input').value.toLowerCase();
+            const statusFilter = document.getElementById('order-status-filter').value;
+
+            const filtered = orders.filter(o => {
+                const name = `${o.customer.firstName} ${o.customer.lastName}`.toLowerCase();
+                const matchesQuery = o.orderId.toLowerCase().includes(query) || name.includes(query);
+                const matchesStatus = (statusFilter === 'all' || o.paymentMethod === statusFilter);
+                return matchesQuery && matchesStatus;
+            });
+
+            const tbody = document.getElementById('orders-table-tbody');
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-charcoal-800/60">No orders match your search criteria.</td></tr>`;
+            } else {
+                tbody.innerHTML = filtered.map(o => `
+                    <tr class="hover:bg-sand/40 transition">
+                        <td class="p-3.5 font-bold text-sage-800">${o.orderId}</td>
+                        <td class="p-3.5">${o.date}</td>
+                        <td class="p-3.5 font-semibold text-charcoal-900">${o.customer.firstName} ${o.customer.lastName}</td>
+                        <td class="p-3.5 max-w-xs truncate">${o.items.map(i => `${i.name} (${i.quantity})`).join(', ')}</td>
+                        <td class="p-3.5"><span class="px-2 py-0.5 bg-sage-100 text-sage-800 text-[10px] rounded font-bold">${o.paymentMethod}</span></td>
+                        <td class="p-3.5 text-right font-serif font-bold text-charcoal-900">₹${o.total.toLocaleString('en-IN')}</td>
+                        <td class="p-3.5 text-center">
+                            <button onclick='viewStoredReceipt(${JSON.stringify(o.orderId)})' class="px-2.5 py-1 bg-ivory-200 text-charcoal-900 rounded text-[11px] font-semibold hover:bg-sage-600 hover:text-white transition">
+                                View Invoice
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        function viewStoredReceipt(orderId) {
+            const found = orders.find(o => o.orderId === orderId);
+            if (found) {
+                renderConfirmationPage(found);
+                navigateTo('order-confirmation');
+            }
+        }
+
+        // CSV Report Export Generator Function
+        function exportOrdersCSV() {
+            if (orders.length === 0) {
+                showToast('No orders available to export.');
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Order ID,Date,Customer Name,Email,Phone,City,Payment Method,Subtotal,Discount,Shipping,Total Amount,Status\n";
+
+            orders.forEach(o => {
+                const name = `"${o.customer.firstName} ${o.customer.lastName}"`;
+                const row = [
+                    o.orderId,
+                    o.date,
+                    name,
+                    o.customer.email,
+                    o.customer.phone,
+                    o.customer.city,
+                    `"${o.paymentMethod}"`,
+                    o.subtotal,
+                    o.discount,
+                    o.shipping,
+                    o.total,
+                    o.status
+                ].join(",");
+                csvContent += row + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `PaperNest_Sales_Report_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast('Sales report CSV downloaded successfully!');
+        }
+
+
+        // =========================================================================
+        // 6. UTILITIES & MODAL HELPERS
+        // =========================================================================
+
+        function updateBadges() {
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const { finalTotal } = calculateCartTotals();
+
+            const cartBadge = document.getElementById('cart-count-badge');
+            cartBadge.textContent = totalCount;
+
+            const subtotalHeader = document.getElementById('cart-header-subtotal');
+            subtotalHeader.textContent = `₹${finalTotal.toLocaleString('en-IN')}`;
+
+            const wishBadge = document.getElementById('wishlist-count-badge');
+            wishBadge.textContent = wishlist.length;
+            if (wishlist.length > 0) wishBadge.classList.remove('hidden');
+            else wishBadge.classList.add('hidden');
+        }
+
+        function toggleWishlist(productId) {
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                showToast('Item removed from wishlist.');
+            } else {
+                wishlist.push(productId);
+                showToast('Item saved to your wishlist!');
+            }
+            localStorage.setItem('papernest_wishlist', JSON.stringify(wishlist));
+            updateBadges();
+            if (activePage === 'shop') filterProducts();
+        }
+
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('modal-search-input').focus();
+            }
+        }
+
+        function handleModalSearch(query) {
+            const resultsBox = document.getElementById('modal-search-results');
+            if (!query.trim()) {
+                resultsBox.innerHTML = '';
+                return;
+            }
+
+            const matches = PRODUCTS.filter(p => p.name.toLowerCase().includes(query.toLowerCase()) || p.category.toLowerCase().includes(query.toLowerCase())).slice(0, 5);
+
+            if (matches.length === 0) {
+                resultsBox.innerHTML = `<p class="text-xs text-charcoal-800/60 p-4 text-center">No products found for "${query}"</p>`;
+            } else {
+                resultsBox.innerHTML = matches.map(p => `
+                    <div onclick="toggleSearchModal(); navigateTo('product-details', {productId: '${p.id}'})" class="flex items-center gap-3 p-3 hover:bg-sand rounded-lg cursor-pointer transition">
+                        <img src="${p.image}" class="w-10 h-10 object-cover rounded">
+                        <div>
+                            <p class="text-xs font-semibold text-charcoal-900">${p.name}</p>
+                            <p class="text-[10px] font-bold text-sage-700">₹${p.price.toLocaleString('en-IN')} · ${p.category}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-charcoal-900 text-ivory-50 text-xs font-semibold px-4 py-3 rounded-lg shadow-xl flex items-center gap-2 border border-sage-600 animate-fade-in pointer-events-auto';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-sage-300"></i> ${message}`;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'transition-opacity');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            showToast('Thank you for subscribing to PaperNest Circle!');
+            e.target.reset();
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Your message has been sent. Our team will respond within 24 hours.');
+            e.target.reset();
+        }
+
+        // Initialize application on Window load
+        window.onload = function() {
+            navigateTo('home');
+            updateBadges();
+        };
+    </script>
+</body>
+</html>
